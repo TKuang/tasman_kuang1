@@ -20,7 +20,17 @@ public class Calculate {
 	public static double toDegrees (double num) {
 		double toDegrees= num*(180/3.14159);
 		return toDegrees;
-		
 	}
-
+	public static double toRadians (double num) {
+		double toRadians = num*(3.14159/180);
+		return toRadians;	
+	}
+	public static int discriminant (int a, int b, int c) {
+		int discriminant = b*b-(4*a*c);
+		return discriminant;
+	}
+	public static int toImproperFrac (int num1, int num2, int num3) {
+		int  toImproperFrac = (num1*num2+num3)/num3;
+		return toImproperFrac;	
+	}
 }
