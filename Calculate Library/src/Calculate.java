@@ -12,8 +12,12 @@ public class Calculate {
 		int cube = num*num*num;
 		return cube;
 	}
+	public static double average (int num1, int num2) {
+		int average = (num1+num2)/2;
+		return average;
+	}
 	public static double average (int num1, int num2, int num3) {
-		int average = (num1*num2*num3)/3;
+		int average = (num1+num2+num3)/3;
 		return average;
 				
 	}
@@ -29,8 +33,19 @@ public class Calculate {
 		int discriminant = b*b-(4*a*c);
 		return discriminant;
 	}
-	public static int toImproperFrac (int num1, int num2, int num3) {
-		int  toImproperFrac = (num1*num2+num3)/num3;
-		return toImproperFrac;	
+	public static String toImproperFrac (int whole, int num, int den) {
+		int  nume = whole * den + num;
+		String ImproperFrac = new String(nume + "/" + den);
+		return ImproperFrac;	
+	}
+	public static String toMixedNum (int num, int denom) {
+		int whole = num/denom;
+		int nume = num - whole * denom;
+		String toMixedNum = new String(whole + "_" + nume + "/" + denom);
+		return toMixedNum;
+	}
+	public static String foil (int num1, int num2, int num3, int num4, int a) {
+		String equation = (num1*a + num2)(num3*a + num4);
+		
 	}
 }
