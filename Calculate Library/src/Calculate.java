@@ -46,6 +46,42 @@ public class Calculate {
 	}
 	public static String foil (int num1, int num2, int num3, int num4, int a) {
 		String equation = (num1*a + num2)(num3*a + num4);
+		return foil;
 		
 	}
+	public static Boolean IsDivisibleBy (int num1, int num2) {
+		Boolean yes = num1 % num2 == 0;
+		if (Boolean = yes){
+			System.out.println(num1 + " is divisible by " + num2);
+		}
+		else {
+			System.out.println(num1 + " is not divisible by " + num2);
+		}
+		return IsDivisbleBy;
+	}
+	public static double absValue (double num){
+		if (num <= 0){
+			System.out.println(num * -1);
+		}
+		else {
+			System.out.println(num);
+		}
+		return num;
+	}
+	public static double max (double num1, double num2){
+		if (num1 >= num2){
+			System.out.println(num1);
+		}
+		else {
+			System.out.println(num2);
+		}
+		return max;
+	}
+		
+	
+		
+		
+	
+	
+	
 }
