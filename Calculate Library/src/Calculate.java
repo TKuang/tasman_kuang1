@@ -46,58 +46,54 @@ public class Calculate {
 	}
 	public static String foil (int num1, int num2, int num3, int num4, int a) {
 		String equation = new String((num1*a + "^2" + num2 *(num3*a + num4)));
-		System.out.println(equation);
 		return equation;
 		
 	}
 	public static Boolean IsDivisibleBy (int num1, int num2) {
 		Boolean yes = num1 % num2 == 0;
+		Boolean no = num1 % num2 != 0;
 		if (yes){
-			System.out.println(num1 + " is divisible by " + num2);
+			return yes;
 		}
 		else {
-			System.out.println(num1 + " is not divisible by " + num2);
+			return no;
 		}
-		return yes;
 	}
 	public static double absValue (double num){
 		if (num <= 0){
-			System.out.println(num * -1);
+			return num * -1;
 		}
 		else {
-			System.out.println(num);
+			return num;
 		}
-		return num;
+	
 	}
 	public static double max (double num1, double num2){
 		if (num1 >= num2){
-			System.out.println(num1);
+			return num1;
 		}
 		else {
-			System.out.println(num2);
+			return num2;
 		}
-		return num1;
 	}
 	public static double max (double num1, double num2, double num3){
 	    if (num1 >= num2 && num1 >= num3){
-	        System.out.println(num1);
+		    return num1;      
 	       }
 	       else if(num2 >= num1 && num2 >= num3){
-	           System.out.println(num2);
+		    return num2;
 	       }
 	       else {
-	           System.out.println(num3);
+	            return num3;
 	       }
-	       return num1;
 	   }
 	public static int min (int num1, int num2){
 	       if (num1 <= num2){
-	           System.out.println(num1);
+	           return num1;
 	       }
 	       else{
-	           System.out.println(num2);
+	           return num2;
 	       }
-	       return num1;
 	   }
 	public static double round2 (double num){
 	    if (num * 1000 % 10 < 5){
@@ -107,6 +103,25 @@ public class Calculate {
 	        return (10 - num * 1000 % 10 + num * 1000) / 1000;
 	       }
 	   }
+	public static double exponent (double num1, int num2){
+		for (int i = 1, i <= num2, i++){
+			num1 * num1;
+		}
+		return num1;
+	}
+	public static int factorial (num){
+		int num1;
+		num1 = num;
+		for (int i = num, i > 0, i--){
+			num--;
+			int final = num1 * num;
+		}
+		return final;
+	}
+			
+	
+	
+	
 	   
 	   
 	   
