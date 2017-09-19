@@ -50,14 +50,13 @@ public class Calculate {
 		
 	}
 	public static Boolean IsDivisibleBy (int num1, int num2) {
-		Boolean yes = num1 % num2 == 0;
-		Boolean no = num1 % num2 != 0;
-		if (yes){
-			return yes;
+		if (num1 % num2 == 0){
+			Boolean IsDivisible = true;
 		}
 		else {
-			return no;
+			Boolean IsDivisible = false
 		}
+		return IsDivisible;
 	}
 	public static double absValue (double num){
 		if (num <= 0){
@@ -118,7 +117,19 @@ public class Calculate {
 		}
 		return final;
 	}
-			
+	public static Boolean prime (int num){
+		int temp;
+		boolean isPrime=true;
+		for(int i=2;i<=num/2;i++){
+        	  	 temp=num%i;
+		  	 if(temp==0)
+	   	{
+	   	   		IsPrime=false;
+	   	   		break;
+	   	}
+		return IsPrime;
+		}
+		
 	
 	
 	
