@@ -117,17 +117,11 @@ public class Calculate {
 		}
 		return final;
 	}
-	public static Boolean prime (int num){
-		int temp;
-		boolean isPrime=true;
-		for(int i=2;i<=num/2;i++){
-        	  	 temp=num%i;
-		  	 if(temp==0)
-	   	{
-	   	   		IsPrime=false;
-	   	   		break;
-	   	}
-		return IsPrime;
+	public static boolean prime (int num1){
+		int num2;
+		IsDivisible();
+		
+		
 	}
 	public static int gcf (int num1, int num2){
 		if (num1 > num2){
