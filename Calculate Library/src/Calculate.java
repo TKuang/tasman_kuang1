@@ -128,7 +128,14 @@ public class Calculate {
 	   	   		break;
 	   	}
 		return IsPrime;
+	}
+	public static int gcf (int num1, int num2){
+		if (num1 > num2){
+			int gcd = num1 % num2;
 		}
+		else if (num1 = num2){
+			int gcd = 
+	
 		
 	
 	
