@@ -118,18 +118,56 @@ public class Calculate {
 		return final;
 	}
 	public static boolean prime (int num1){
-		int num2;
-		IsDivisible();
-		
-		
+		boolean check;
+		if(num > 1){
+			for(int i = num - 1; i > 1; i --){
+				check = Calculate.isDivisibleBy(num, i);
+				if (check == true){
+					return false;
+				}
+			}
+		}
+		else {
+			return false;
+		}
+		return true;
 	}
 	public static int gcf (int num1, int num2){
-		if (num1 > num2){
-			int gcd = num1 % num2;
+		int num1;
+		int num2;
+		while (num2 != 0){
+			if(isDivisibleBy(num1, num2)){
+				num1 = num2;
+			}
+			else {
+				int num3 = num1;
+				num1 = num2;
+				num2 = num3 % num2;
+			}
 		}
-		else if (num1 = num2){
-			int gcd = 
-	
+		return (int) absValue (num1);
+	}
+	public static double sqrt(double num){
+		double estimate;
+		double root;
+		if (number == 0){
+			root = 0;
+		}
+		else if (num > 0){
+			root = num/2;
+			do{
+				estimate = root;
+				root = (estimate + (num/estimate))/2;
+			}
+			while ((estimate - root) != 0);
+		}
+		else {
+			root = num;
+		}
+		return round2(sqareRoot);
+	}
+}
+				
 		
 	
 	
