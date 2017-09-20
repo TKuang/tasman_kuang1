@@ -117,7 +117,7 @@ public class Calculate {
 		}
 		return final;
 	}
-	public static boolean prime (int num1){
+	public static boolean isPrime (int num1){
 		boolean check;
 		if(num > 1){
 			for(int i = num - 1; i > 1; i --){
