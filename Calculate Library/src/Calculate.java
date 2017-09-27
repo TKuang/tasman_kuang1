@@ -166,10 +166,25 @@ public class Calculate {
 		}
 		return round2(sqareRoot);
 	}
+	public static double quadForm (num1, num2, num3){
+		double quad = discriminant(num1, num2,num3);
+		if (quad < 0){
+			String not = "no real roots";
+			return not;
+		} 
+		else if (quad = 0){
+			double answer = round2(-num2/(2*num1));
+			String result = answer + "";
+			return result;
+		} 
+		else {
+			double answer1 = round2((-num2 + quad)/(2 * num1));
+			double answer2 = round2((-num2 - quad)/(2 * num1));
+			String final = min(answer1, answer2) + " and " + max(answer1, answer2);
+			return final;
+		}	
 }
-				
-		
-	
+			
 	
 	
 	   
