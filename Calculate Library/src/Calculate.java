@@ -49,14 +49,15 @@ public class Calculate {
 		return equation;
 		
 	}
-	public static Boolean IsDivisibleBy (int num1, int num2) {
+	public static Boolean isDivisibleBy (int num1, int num2) {
 		if (num1 % num2 == 0){
 			Boolean IsDivisible = true;
+			return IsDivisible;
 		}
 		else {
-			Boolean IsDivisible = false
+			Boolean IsDivisible = false;
+			return IsDivisible;
 		}
-		return IsDivisible;
 	}
 	public static double absValue (double num){
 		if (num <= 0){
@@ -103,21 +104,23 @@ public class Calculate {
 	       }
 	   }
 	public static double exponent (double num1, int num2){
-		for (int i = 1, i <= num2, i++){
-			num1 * num1;
+		for (int i = num2; i > 0; i--){
+			*= num1;
+			double answer = num1;
 		}
-		return num1;
+		return answer;
 	}
-	public static int factorial (num){
+	public static int factorial (int num){
 		int num1;
 		num1 = num;
-		for (int i = num, i > 0, i--){
+		int answer = num1 * num;
+		for (int i = num; i > 0; i--){
 			num--;
-			int final = num1 * num;
+			answer = num1 * num;
 		}
-		return final;
+		return answer;
 	}
-	public static boolean isPrime (int num1){
+	public static boolean isPrime (int num){
 		boolean check;
 		if(num > 1){
 			for(int i = num - 1; i > 1; i --){
@@ -133,8 +136,6 @@ public class Calculate {
 		return true;
 	}
 	public static int gcf (int num1, int num2){
-		int num1;
-		int num2;
 		while (num2 != 0){
 			if(isDivisibleBy(num1, num2)){
 				num1 = num2;
@@ -150,7 +151,7 @@ public class Calculate {
 	public static double sqrt(double num){
 		double estimate;
 		double root;
-		if (number == 0){
+		if (num == 0){
 			root = 0;
 		}
 		else if (num > 0){
@@ -164,15 +165,15 @@ public class Calculate {
 		else {
 			root = num;
 		}
-		return round2(sqareRoot);
+		return round2(root);
 	}
-	public static double quadForm (num1, num2, num3){
+	public static String quadForm (int num1, int num2, int num3){
 		double quad = discriminant(num1, num2,num3);
 		if (quad < 0){
 			String not = "no real roots";
 			return not;
 		} 
-		else if (quad = 0){
+		else if (quad == 0){
 			double answer = round2(-num2/(2*num1));
 			String result = answer + "";
 			return result;
@@ -180,14 +181,14 @@ public class Calculate {
 		else {
 			double answer1 = round2((-num2 + quad)/(2 * num1));
 			double answer2 = round2((-num2 - quad)/(2 * num1));
-			String final = min(answer1, answer2) + " and " + max(answer1, answer2);
-			return final;
+			String result = (min(answer1, answer2)) + " and " + max(answer1, answer2);
+			int input1 = min(answer1, answer2)
+			return result;
 		}	
+	}
 }
 			
 	
+				
+		
 	
-	   
-	   
-	   
-	         
