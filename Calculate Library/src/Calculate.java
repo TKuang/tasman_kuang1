@@ -273,13 +273,14 @@ public class Calculate {
 			double answer1 = round2((-num2 + quad)/(2 * num1));
 			double answer2 = round2((-num2 - quad)/(2 * num1));
 			//rounds roots to two decimal places
-			if (max(answer1, answer2) = answer1){
+			if (max(answer1, answer2) == answer1){
 				String result = answer2 + " and " + answer1;
+				return result;
 			}
 			else {
 				String result = answer1 + " and " + answer2;
+				return result;
 			}
-			return result;
 		}	
 	}
 }
