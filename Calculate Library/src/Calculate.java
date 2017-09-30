@@ -47,10 +47,10 @@ public class Calculate {
 		return discriminant;
 	}
 	//returns improper fractions given mixed number
-	public static String toImproperFrac (int whole, int num, int den) {
+	public static String toImproperFrac (int whole, int nume, int denom) {
 		// whole number is multiplied by denominator, then added to numerator of mixed fraction to find the numerator of improper fraction
-		int numerator = whole * den + num;
-		String ImproperFrac = numerator + "/" + den;
+		int numerator = whole * denom + nume;
+		String ImproperFrac = numerator + "/" + denom;
 		//initiated string prints out numerator of new improper fraction, then "/" and old denominator because denominator of mixed and improper fractions are same
 		return ImproperFrac;	
 	}
@@ -75,12 +75,13 @@ public class Calculate {
 		if (num1 % num2 == 0){
 			Boolean isDivisibleBy = true;
 			//num1 is divisible by num2 if the remainder of their division is 0
+			return isDivisibleBy;
 		}
 		else {
 			Boolean isDivisibleBy = false;
 			//if there is a remainder, then they are not divisible
+			return isDivisibleBy;
 		}
-		return isDivisibleBy;
 		if (num2 == 0){
 			throw new ArithmeticException("A result of a number divided by 0 is undefined");
 		}
@@ -176,8 +177,9 @@ public class Calculate {
 		int answer = num1 * num;
 		if (num >= 0){
 			for (int i = num; i > 0; i--){
-			num1--;
-			answer = num * num1;
+				num1--;
+				answer = num * num1;
+			}
 			//the number enterred is multiplied by itself repeatedly, with the multiple increasing by incrememnts of 1 until it reaches 0
 			return answer;
 			}
@@ -202,7 +204,7 @@ public class Calculate {
 				}
 			}
 		}
-		else if (num = 1){
+		else if (num == 1){
 			return true;
 			//number is prime if it's one
 		}
@@ -237,7 +239,7 @@ public class Calculate {
 		}
 		else if (num > 0){
 			root = num/2;
-			do{
+			do {
 				estimate = root;
 				root = (estimate + (num/estimate))/2;
 				//newton's method
