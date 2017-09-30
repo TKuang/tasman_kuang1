@@ -51,13 +51,12 @@ public class Calculate {
 	}
 	public static Boolean isDivisibleBy (int num1, int num2) {
 		if (num1 % num2 == 0){
-			Boolean IsDivisible = true;
-			return IsDivisible;
+			Boolean isDivisibleBy = true;
 		}
 		else {
-			Boolean IsDivisible = false;
-			return IsDivisible;
+			Boolean isDivisibleBy = false;
 		}
+		return isDivisibleBy;
 	}
 	public static double absValue (double num){
 		if (num <= 0){
@@ -104,11 +103,11 @@ public class Calculate {
 	       }
 	   }
 	public static double exponent (double num1, int num2){
+		double multiply = num1;
 		for (int i = num2; i > 0; i--){
-			*= num1;
-			double answer = num1;
+			multiply *= num1;
 		}
-		return answer;
+		return multiply;
 	}
 	public static int factorial (int num){
 		int num1;
@@ -182,7 +181,6 @@ public class Calculate {
 			double answer1 = round2((-num2 + quad)/(2 * num1));
 			double answer2 = round2((-num2 - quad)/(2 * num1));
 			String result = (min(answer1, answer2)) + " and " + max(answer1, answer2);
-			int input1 = min(answer1, answer2)
 			return result;
 		}	
 	}
