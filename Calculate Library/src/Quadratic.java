@@ -7,6 +7,55 @@
 
 public class Quadratic
 {
+    public static double round2 (double num){
+	//for negative number
+	if (num < 0){
+		num *= -1;
+		//converts number to positive if initially negative
+		if (num * 1000 % 10 < 5){
+			num = (num * 1000 - num * 1000 % 10)/1000;
+		}
+		else {
+			num = (10 - num * 1000 % 10 + num * 1000)/1000;
+		}
+		num *= -1;
+		//converts number back into negative as initially
+		return num;
+	}
+	//for positive number
+	else {
+		if (num * 1000 % 10 < 5){
+			return (num * 1000 - num * 1000 % 10)/1000;
+		}
+		else {
+			return (10 - num * 1000 % 10 + num * 1000)/1000;
+			}
+		}
+	}
+    
+        public static double sqrt(double num){
+        double answer; 
+        double root;
+        if(number == 0){
+            root = 0;
+        }
+        else if(num > 0){
+            root = num/2;
+            do {
+                estimate = root;
+                root = (answer + (num / answer)) / 2;
+            }
+            while ((answer - root) != 0);
+        }
+        else if (num < 0){
+            throw new IllegalArgumentException("You enterred a negative number");
+        }
+        else {
+            root = num;
+        }
+        return round2(root);
+    }
+    
     public static String quadrDescriber(double a, double b, double c){
         String parabolaInfo = "Description of the graph of: \n" + "y = " + 
             a + "x^2 + " + b + " + " + c + "\n\n";
@@ -25,28 +74,6 @@ public class Quadratic
         parabolaInfo += "y-intercept: " + c + "\n";
         return parabolaInfo;
     }
-    public static double sqrt(double num){
-        double answer; 
-        double root;
-        if(number == 0){
-            root = 0;
-        }
-        else if(num > 0){
-            root = num/2;
-            do {
-                estimate = root;
-                root = (estimate + (num / answer)) / 2;
-            }
-            while ((answer - root) != 0);
-        }
-        else if (num < 0){
-            throw new IllegalArgumentException("You enterred a negative number");
-        }
-        else {
-            root = num;
-        }
-        return round2(root);
-    }
     public static String quadForm(double a, double b, double c){
         if(discriminant(a, b, c) < 0){//if the output after calling the discriminant is a negative number
             return "None";
@@ -63,27 +90,7 @@ public class Quadratic
             return answer;
         }
     }
-    public static double round2(double number){
-        if(number < 0){//rounds a number that is negative
-            number *= -1;//converts the number to a positive number
-            if(number * 1000 % 10 < 5){
-                number = (number * 1000 - number * 1000 % 10) / 1000;
-            }
-            else {
-                number = (10 - number * 1000 % 10 + number * 1000) / 1000;
-            }
-            number *= -1;//converts the number back to a negative number
-            return number;
-        }
-        else{//rounds a number that is positive
-            if(number * 1000 % 10 < 5){
-                return (number * 1000 - number * 1000 % 10) / 1000;
-            }
-            else{
-                return (10 - number * 1000 % 10 + number * 1000) / 1000;
-            }
-        }
-    }
+
     public static double discriminant(double a, double b, double c){
         return (b * b) - 4 * a * c;
     }
