@@ -1,8 +1,7 @@
-/**
- * This class is responsible for the calculations QuadraticClient need to
- * print out information about a parabola
- * Tasman Kuang
- * 10/17/2017
+/*
+  This class is responsible for all calculations
+  Tasman Kuang
+  10/17/2017
  */
 
 public class Quadratic
