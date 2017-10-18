@@ -8,25 +8,21 @@
 public class Quadratic
 {
     public static double round2 (double num){
-	//for negative number
 	if (num < 0){
 		num *= -1;
-		//converts number to positive if initially negative
 		if (num * 1000 % 10 < 5){
 			num = (num * 1000 - num * 1000 % 10)/1000;
 		}
 		else {
-			num = (10 - num * 1000 % 10 + num * 1000)/1000;
+		num = (10 - num * 1000 % 10 + num * 1000)/1000;
 		}
 		num *= -1;
-		//converts number back into negative as initially
 		return num;
 	}
-	//for positive number
 	else {
 		if (num * 1000 % 10 < 5){
 			return (num * 1000 - num * 1000 % 10)/1000;
-		}
+			}
 		else {
 			return (10 - num * 1000 % 10 + num * 1000)/1000;
 			}
