@@ -86,7 +86,8 @@ public class Quadratic
         String description = "Description of the graph of: \n" + "y = " + a + "x^2 + " + b + " + " + c + "\n\n";
         if(a < 0){
             description += "Opens: Down\n";
-        }else{
+        }
+	else {
             description += "Opens: Up\n";
         }
         double x-vertex = -b / (2 * a);
