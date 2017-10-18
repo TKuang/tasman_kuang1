@@ -24,26 +24,28 @@ public class Quadratic
         parabolaInfo += "x-intercept(s): " + xIntercepts + "\n";
         parabolaInfo += "y-intercept: " + c + "\n";
         return parabolaInfo;
-    }
-    public static double sqrt(double number){
+    }2
+    public static double sqrt(double num){
         double estimate; 
-        double squareRoot;
-        if(number < 0){//throws an exception if the input is a negative number
-            throw new IllegalArgumentException("Your input is a negative numebr");
-        }
-        else if(number == 0){
-            squareRoot = 0;
+        double root;
+        if(number == 0){
+            root = 0;
         }
         else if(number > 0){
-            squareRoot = number / 2;
+            root = number / 2;
             do{
-                estimate = squareRoot;
-                squareRoot = (estimate + (number / estimate)) / 2;
-            }while ((estimate - squareRoot) != 0);
-        }else{
-            squareRoot = number;
+                estimate = root;
+                root = (estimate + (num / estimate)) / 2;
+            }
+            while ((estimate - squareRoot) != 0);
         }
-        return round2(squareRoot);
+        else if (number < 0){
+            throw new IllegalArgumentException("You enterred a negative number");
+        }
+        else {
+            root = num;
+        }
+        return round2(root);
     }
     public static String quadForm(double a, double b, double c){
         if(discriminant(a, b, c) < 0){//if the output after calling the discriminant is a negative number
@@ -67,7 +69,7 @@ public class Quadratic
             if(number * 1000 % 10 < 5){
                 number = (number * 1000 - number * 1000 % 10) / 1000;
             }
-            else{
+            else {
                 number = (10 - number * 1000 % 10 + number * 1000) / 1000;
             }
             number *= -1;//converts the number back to a negative number
