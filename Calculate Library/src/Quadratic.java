@@ -24,22 +24,22 @@ public class Quadratic
         parabolaInfo += "x-intercept(s): " + xIntercepts + "\n";
         parabolaInfo += "y-intercept: " + c + "\n";
         return parabolaInfo;
-    }2
+    }
     public static double sqrt(double num){
-        double estimate; 
+        double answer; 
         double root;
         if(number == 0){
             root = 0;
         }
-        else if(number > 0){
-            root = number / 2;
-            do{
+        else if(num > 0){
+            root = num/2;
+            do {
                 estimate = root;
-                root = (estimate + (num / estimate)) / 2;
+                root = (estimate + (num / answer)) / 2;
             }
-            while ((estimate - squareRoot) != 0);
+            while ((answer - root) != 0);
         }
-        else if (number < 0){
+        else if (num < 0){
             throw new IllegalArgumentException("You enterred a negative number");
         }
         else {
