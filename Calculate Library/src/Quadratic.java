@@ -84,10 +84,10 @@ public class Quadratic
     public static String quadrDescriber(double a, double b, double c){
         String description = "Description of the graph of: \n" + "y = " + a + "x^2 + " + b + " + " + c + "\n\n";
         if(a < 0){
-            description += "Opens: Down\n";
+            description += "Concave down\n";
         }
 	else {
-            description += "Opens: Up\n";
+            description += "Concave up\n";
         }
         double x-vertex = -b / (2 * a);
         double y-vertex = a * x-vertex ^ 2 + b * x-vertex + c;
