@@ -53,22 +53,21 @@ public class Quadratic
     }
     
     public static String quadrDescriber(double a, double b, double c){
-        String parabolaInfo = "Description of the graph of: \n" + "y = " + 
-            a + "x^2 + " + b + " + " + c + "\n\n";
+        String description = "Description of the graph of: \n" + "y = " + a + "x^2 + " + b + " + " + c + "\n\n";
         if(a < 0){
-            parabolaInfo += "Opens: Down\n";
+            description += "Opens: Down\n";
         }else{
-            parabolaInfo += "Opens: Up\n";
+            description += "Opens: Up\n";
         }
-        double vertX = -b / (2 * a);
-        double vertY = a * vertX * vertX + b * vertX + c;
-        String xIntercepts = quadForm(a, b, c);
+        double x-vertex = -b / (2 * a);
+        double y-vertex = a * x-vertex ^ 2 + b * x-vertex + c;
+        String x-intercepts = quadForm(a, b, c);
         
-        parabolaInfo += "Axis of Symmetry: " + vertX + "\n";
-        parabolaInfo += "Vertex: (" + vertX + ", " + vertY + ")\n";
-        parabolaInfo += "x-intercept(s): " + xIntercepts + "\n";
-        parabolaInfo += "y-intercept: " + c + "\n";
-        return parabolaInfo;
+        description += "Axis of Symmetry: " + x-vertex + "\n";
+        description += "Vertex: (" + x-vertex + ", " + y-vertex + ")\n";
+        description += "X-intercept: " + x-intercepts + "\n";
+        description += "Y-intercept: " + c + "\n";
+        return description;
     }
     public static String quadForm(double a, double b, double c){
         if(discriminant(a, b, c) < 0){//if the output after calling the discriminant is a negative number
