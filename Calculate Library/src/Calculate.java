@@ -72,19 +72,19 @@ public class Calculate {
 	}
 	//determines divisibility of an integer by another
 	public static Boolean isDivisibleBy (int num1, int num2) {
+		Boolean IsDivisibleBy;
 		if (num1 % num2 == 0){
-			Boolean isDivisibleBy = true;
+			IsDivisibleBy = true;
 			//num1 is divisible by num2 if the remainder of their division is 0
-			return isDivisibleBy;
 		}
 		else {
-			Boolean isDivisibleBy = false;
+			IsDivisibleBy = false;
 			//if there is a remainder, then they are not divisible
-			return isDivisibleBy;
 		}
 		if (num2 == 0){
 			throw new ArithmeticException("A result of a number divided by 0 is undefined");
 		}
+		return IsDivisibleBy;
 	}
 	//returns absolute value of specific number
 	public static double absValue (double num){
@@ -157,7 +157,7 @@ public class Calculate {
 			}
 		}
 	}
-	//returns reuslt of a value raised to a positive integer power
+	//returns result of a value raised to a positive integer power
 	public static double exponent (double num1, int num2){
 		double multiply = num1;
 		for (int i = num2; i > 0; i--){
@@ -165,10 +165,10 @@ public class Calculate {
 			multiply *= num1;
 			//num1 is multiplied by itself for num2 cycles
 		}
-		return multiply;
 		if (num2 < 0){
 			throw new ArithmeticException("Program will only compute for positive exponents");
 		}
+		return multiply;
 	}
 	//returns factorial of specific value
 	public static int factorial (int num){
@@ -191,27 +191,29 @@ public class Calculate {
 	//determines whether or not a number is prime
 	public static boolean isPrime (int num){
 		boolean check;
+		boolean isPrime;
 		if(num > 1){
 			for(int i = num - 1; i > 1; i --){
 				check = Calculate.isDivisibleBy(num, i);
 				//checks to see if any num is divisible by any number less than it besides 1
 				if (check == true){
-					return false;
+					isPrime = false;
 					//if num is divisible by a smaller number other than 1, then it is not prime
 				}
 				else {
-					return true;
+					isPrime = true;
 				}
 			}
 		}
 		else if (num == 1){
-			return true;
+			isPrime = true;
 			//number is prime if it's one
 		}
 		else {
-			return false;
+			isPrime = false;
 			//number is not prime if it's 0 or less
 		}
+		return isPrime;
 		
 	}
 	//returns greatest common factor of two numbers
@@ -229,7 +231,7 @@ public class Calculate {
 		}
 		return (int) absValue (num1);
 	}
-	//returns square root of a speciic number
+	//returns square root of a specific number
 	public static double sqrt(double num){
 		double estimate;
 		double root;
@@ -249,10 +251,10 @@ public class Calculate {
 		else {
 			root = num;
 		}
-		return round2(root);
 		if (num < 0){
-			throw new ArithmeticException("Square root of negative number is an imaginary number");
+			throw new IllegalArgumentException ("Square root of negative number is an imaginary number");
 		}
+		return round2(root);
 	}
 	//returns the roots of a quadratic equation by using the quadratic formula
 	public static String quadForm (int num1, int num2, int num3){
@@ -284,9 +286,3 @@ public class Calculate {
 		}	
 	}
 }
-
-			
-	
-				
-		
-	
