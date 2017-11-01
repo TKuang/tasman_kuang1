@@ -1,5 +1,5 @@
 /*Tasman Kuang
- * Steptember 6, 2017
+ * September 6, 2017
  * Self-written math library...contains series of methods to solve basic math functions
  */
 public class Calculate {
@@ -64,9 +64,9 @@ public class Calculate {
 		//initiated string prints out whole number followed by numerator, /, and denominator, appearing as a mixed fraction
 		return toMixedNum;
 	}
-	//returns binomial multiplication in form of quadratic eqution
-	public static String foil (int num1, int num2, int num3, int num4, int a) {
-		String equation = (num1*a + "^2" + num2 *(num3*a + num4));
+	//returns binomial multiplication in form of quadratic equation
+	 public static String foil(int a, int b, int c, int d, String x){
+	    String equation = new String(a*c + x + "^2 " + "+ " + (a*d + b*c) + x +" + " + b*d);
 		// equation form of (num1*a + num2)(num3*a + num4) simplifies/foils to (num*a^2 + num2*num3*a + num2*num4) when fully distributed
 		return equation;
 	}
@@ -191,7 +191,7 @@ public class Calculate {
 	//determines whether or not a number is prime
 	public static boolean isPrime (int num){
 		boolean check;
-		boolean isPrime;
+		boolean isPrime = true;
 		if(num > 1){
 			for(int i = num - 1; i > 1; i --){
 				check = Calculate.isDivisibleBy(num, i);
