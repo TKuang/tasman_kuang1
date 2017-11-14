@@ -10,5 +10,7 @@ public clas FracCalc {
   }
   
   public static String produceAnswer(fractions){
+    String[] split = fractions.split(" ");
+    String operand1 = split[0];
     
     
