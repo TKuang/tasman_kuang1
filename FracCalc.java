@@ -1,14 +1,19 @@
 package fracCalc;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FracCalc {
 
     public static void main(String[] args) 
     {
-    	Scanner input = new Scanner(System.in);
-        System.out.println("Type an addition operation between two fractions");
-        String fractions = input.next();
-        System.out.print("Sum = " + produceAnswer(fractions));
+    	String expression = "";
+    	while (!expression.equals("quit")) {
+    		Scanner input = new Scanner(System.in);
+    		System.out.println("Type an addition operation between two fractions or type quit");
+    		expression = input.nextLine();
+    		System.out.println(produceAnswer(expression));
+    	}
+        
         // TODO: Read the input from the user and call produceAnswer with an equation
 
     }
@@ -21,17 +26,46 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String fractions)
+    public static String produceAnswer(String expression)
     { 
-    	String[] split = fractions.split(" ");
-        String Operand1 = split[0];
-        String operator = split[1];
-        String Operand2 = split[split.length - 1];
-        return Operand2;
+    	String[] splitExpression = expression.split(" ");
+        String operand1 = splitExpression[0];
+        String operator = splitExpression[1];
+        String operand2 = splitExpression[2];
+        String[] splitOperand1 = new String[3];   
+        String[] splitOperand2 = new String[3];
+        fractionData(operand1, splitOperand1);
+        fractionData(operand2, splitOperand2);
+        String result = Arrays.toString(splitOperand2);
+        return result;
         // TODO: Implement this function to produce the solution to the input
-        
+    }
+    
+    public static void fractionData(String operand, String[] splitOperand) {
+
+    	if( (operand.contains("/")) && (operand.contains("_"))) {
+    		String[] split2 = operand.split("/");
+        	split2 = operand.split("_");
+        	splitOperand[0] = "whole:" + split2[0];
+        	splitOperand[1] = " numerator:" + split2[1];
+        	splitOperand[2] = " denominator:" + split2[2];
+    	}
+    	else if (operand.contains("/") && !operand.contains("_")) {
+    		String[] split2 = operand.split("/");
+    		splitOperand[0] = "whole:0 ";
+    		splitOperand[1] = " numerator:" + split2[0];
+    		splitOperand[2] = " denominator" + split2[1];
+    	}
+    	else {
+    		splitOperand[0] = "whole:" + operand;
+    		splitOperand[1] = " numberator:0"; 
+    		splitOperand[2] = " denominator:1";
+    	}
+    	}
+    	
+    	
+    	
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
-}
