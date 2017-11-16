@@ -35,37 +35,33 @@ public class FracCalc {
         String[] splitOperand1 = new String[3];   
         String[] splitOperand2 = new String[3];
         fractionData(operand1, splitOperand1);
-        fractionData(operand2, splitOperand2);
-        String result = Arrays.toString(splitOperand2);
-        return result;
+        return fractionData(operand2, splitOperand2);
         // TODO: Implement this function to produce the solution to the input
     }
     
-    public static void fractionData(String operand, String[] splitOperand) {
-
+    public static String fractionData(String operand, String[] splitOperand) {
+    	String whole = "";
+    	String numerator = "";
+    	String denominator = "";
     	if( (operand.contains("/")) && (operand.contains("_"))) {
     		String[] split2 = operand.split("/");
-        	split2 = operand.split("_");
-        	splitOperand[0] = "whole:" + split2[0];
-        	splitOperand[1] = " numerator:" + split2[1];
-        	splitOperand[2] = " denominator:" + split2[2];
+        	String[] split3 = operand.split("_");
+        	whole = "whole:" + split3[0];
+        	String[] split4 = split2[0].split("_");
+        	numerator = " numerator:" + split4[1];
+        	denominator = " denominator:" + split2[1];
     	}
     	else if (operand.contains("/") && !operand.contains("_")) {
     		String[] split2 = operand.split("/");
-    		splitOperand[0] = "whole:0 ";
-    		splitOperand[1] = " numerator:" + split2[0];
-    		splitOperand[2] = " denominator" + split2[1];
+    		whole = "whole:0";
+    		numerator = " numerator:" + split2[0];
+    		denominator= " denominator:" + split2[1];
     	}
     	else {
-    		splitOperand[0] = "whole:" + operand;
-    		splitOperand[1] = " numberator:0"; 
-    		splitOperand[2] = " denominator:1";
+    		whole = "whole:" + operand;
+    		numerator = " numerator:0"; 
+    		denominator = " denominator:1";
     	}
+    	return whole + numerator + denominator;
     	}
     	
-    	
-    	
-    }
-
-    // TODO: Fill in the space below with any helper methods that you think you will need
-    
