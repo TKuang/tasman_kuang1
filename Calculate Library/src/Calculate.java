@@ -214,7 +214,6 @@ public class Calculate {
 			//number is not prime if it's 0 or less
 		}
 		return isPrime;
-		
 	}
 	//returns greatest common factor of two numbers
 	public static int gcf (int num1, int num2){
@@ -259,30 +258,28 @@ public class Calculate {
 	//returns the roots of a quadratic equation by using the quadratic formula
 	public static String quadForm (int num1, int num2, int num3){
 		double quad = discriminant(num1, num2,num3);
+		String result = "";
 		//plugs three integers into discriminant equation
 		if (quad < 0){
-			String result = "no real roots";
-			//sqare root of negative integer is undefined, so no roots
-			return result;
+			result = "no real roots";
+			//square root of negative integer is undefined, so no roots
 		} 
 		else if (quad == 0){
 			double answer = round2(-num2/(2*num1));
-			String result = answer + "";
+			result = answer + "";
 			//discriminant of 0 will result in one root of -b/2a
-			return result;
 		} 
 		else {
 			double answer1 = round2((-num2 + quad)/(2 * num1));
 			double answer2 = round2((-num2 - quad)/(2 * num1));
 			//rounds roots to two decimal places
 			if (max(answer1, answer2) == answer1){
-				String result = answer2 + " and " + answer1;
-				return result;
+				result = answer2 + " and " + answer1;
 			}
 			else {
-				String result = answer1 + " and " + answer2;
-				return result;
+				result = answer1 + " and " + answer2;
 			}
-		}	
+		}
+		return result;
 	}
 }
