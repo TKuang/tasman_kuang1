@@ -33,35 +33,67 @@ public class FracCalc {
         String operator = splitExpression[1];
         String operand2 = splitExpression[2];
         String[] splitOperand1 = new String[3];   
-        String[] splitOperand2 = new String[3];
-        fractionData(operand1, splitOperand1);
-        return fractionData(operand2, splitOperand2);
-        // TODO: Implement this function to produce the solution to the input
-    }
+        String[] splitOperand2 = new String[3];    
+        
+        parseOperands(operand1, splitOperand1);
+        parseOperands(operand2, splitOperand2;
+        
+        //parseOperands(firstOperand, answerStringOp1);
+        //parseOperands(secondOperand, answerStringOp2);
+        
+        int whole1 = Integer.parseInt(splitOperand1[0]);
+        int nume1 = Integer.parseInt(splitOperand1[1]);
+        int denom1 = Integer.parseInt(splitOerand1[2]);
+        
+        int whole2 = Integer.parseInt(splitOperand2[0]);
+        int nume2 = Integer.parseInt(splitOperand2[1]);
+        int denom2 = Integer.parseInt(splitOperand2[2]);
+        return plusMinus(operator, whole1, nume1, denom1, whole2, nume2, denom2);
+        }
     
-    public static String fractionData(String operand, String[] splitOperand) {
+    public static void fractionData(String operand, String[] splitOperand) {
     	String whole = "";
     	String numerator = "";
     	String denominator = "";
     	if( (operand.contains("/")) && (operand.contains("_"))) {
     		String[] split2 = operand.split("/");
         	String[] split3 = operand.split("_");
-        	whole = "whole:" + split3[0];
+        	whole = split3[0];
         	String[] split4 = split2[0].split("_");
-        	numerator = " numerator:" + split4[1];
-        	denominator = " denominator:" + split2[1];
+        	numerator = split4[1];
+        	denominator = split2[1];
     	}
     	else if (operand.contains("/") && !operand.contains("_")) {
     		String[] split2 = operand.split("/");
-    		whole = "whole:0";
-    		numerator = " numerator:" + split2[0];
-    		denominator= " denominator:" + split2[1];
+    		whole = "0";
+    		numerator = split2[0];
+    		denominator= split2[1];
     	}
     	else {
-    		whole = "whole:" + operand;
-    		numerator = " numerator:0"; 
-    		denominator = " denominator:1";
+    		whole = operand;
+    		numerator = "0"; 
+    		denominator = "1";
     	}
-    	return whole + numerator + denominator;
-    	}
+        splitOperand[0] = wholeNumber;
+        splitOperand[1] = numerator;
+        splitOperand[2] = denominator;
+    }
+                  
+    public static String plusMinus(String operator, int whole1, int nume1, int denom1, int whole2, int nume2, int denom2){
+        int nume1result;
+        int nume2result;
+        int denomresult;
+        nume1result = whole1 * denom1 + nume1;
+        nume2result = whole2 * denom2 + nume2;
+        denomresult = denom1 * denom2;
+        if(operator.equals("+")){
+            return nume1result + nume2result + "/" + denomresult;
+        }
+        else {
+            return nume1result - nume2result + "/" + denomresult;
+        }
+        
+        
+        
+    	
     	
