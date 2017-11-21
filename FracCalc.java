@@ -35,15 +35,15 @@ public class FracCalc {
         String[] splitOperand1 = new String[3];   
         String[] splitOperand2 = new String[3];    
         
-        parseOperands(operand1, splitOperand1);
-        parseOperands(operand2, splitOperand2;
+        fractionData(operand1, splitOperand1);
+        fractionData(operand2, splitOperand2);
         
         //parseOperands(firstOperand, answerStringOp1);
         //parseOperands(secondOperand, answerStringOp2);
         
         int whole1 = Integer.parseInt(splitOperand1[0]);
         int nume1 = Integer.parseInt(splitOperand1[1]);
-        int denom1 = Integer.parseInt(splitOerand1[2]);
+        int denom1 = Integer.parseInt(splitOperand1[2]);
         
         int whole2 = Integer.parseInt(splitOperand2[0]);
         int nume2 = Integer.parseInt(splitOperand2[1]);
@@ -74,7 +74,7 @@ public class FracCalc {
     		numerator = "0"; 
     		denominator = "1";
     	}
-        splitOperand[0] = wholeNumber;
+        splitOperand[0] = whole;
         splitOperand[1] = numerator;
         splitOperand[2] = denominator;
     }
@@ -83,8 +83,8 @@ public class FracCalc {
         int nume1result;
         int nume2result;
         int denomresult;
-        nume1result = whole1 * denom1 + nume1;
-        nume2result = whole2 * denom2 + nume2;
+        nume1result = (whole1 * denom1 + nume1) * denom2;
+        nume2result = (whole2 * denom2 + nume2) * denom1;
         denomresult = denom1 * denom2;
         if(operator.equals("+")){
             return nume1result + nume2result + "/" + denomresult;
@@ -92,8 +92,5 @@ public class FracCalc {
         else {
             return nume1result - nume2result + "/" + denomresult;
         }
-        
-        
-        
-    	
-    	
+    }
+}
