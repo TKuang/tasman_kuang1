@@ -1,4 +1,5 @@
 package fracCalc;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class FracCalc {
     	String expression = "";
     	while (!expression.equals("quit")) {
     		Scanner input = new Scanner(System.in);
-    		System.out.println("Type an addition operation between two fractions or type quit");
+    		System.out.println("Type an operation between two fractions or type quit");
     		expression = input.nextLine();
     		System.out.println(produceAnswer(expression));
     	}
@@ -34,21 +35,21 @@ public class FracCalc {
         String operand2 = splitExpression[2];
         String[] splitOperand1 = new String[3];   
         String[] splitOperand2 = new String[3];    
-        
         fractionData(operand1, splitOperand1);
         fractionData(operand2, splitOperand2);
-        
-        //parseOperands(firstOperand, answerStringOp1);
-        //parseOperands(secondOperand, answerStringOp2);
-        
         int whole1 = Integer.parseInt(splitOperand1[0]);
-        int nume1 = Integer.parseInt(splitOperand1[1]);
-        int denom1 = Integer.parseInt(splitOperand1[2]);
+        int numerator1 = Integer.parseInt(splitOperand1[1]);
+        int denominator1 = Integer.parseInt(splitOperand1[2]);
         
         int whole2 = Integer.parseInt(splitOperand2[0]);
-        int nume2 = Integer.parseInt(splitOperand2[1]);
-        int denom2 = Integer.parseInt(splitOperand2[2]);
-        return plusMinus(operator, whole1, nume1, denom1, whole2, nume2, denom2);
+        int numerator2 = Integer.parseInt(splitOperand2[1]);
+        int denominator2 = Integer.parseInt(splitOperand2[2]);
+        if (operator.equals("+") || operator.equals("-")) {
+        		return plusMinus(operator, whole1, numerator1, denominator1, whole2, numerator2, denominator2);
+        }
+        else {
+        		return multiplyDivide(operator, whole1, numerator1, denominator1, whole2, numerator2, denominator2);
+        }
         }
     
     public static void fractionData(String operand, String[] splitOperand) {
@@ -79,18 +80,25 @@ public class FracCalc {
         splitOperand[2] = denominator;
     }
                   
-    public static String plusMinus(String operator, int whole1, int nume1, int denom1, int whole2, int nume2, int denom2){
-        int nume1result;
-        int nume2result;
-        int denomresult;
-        nume1result = (whole1 * denom1 + nume1) * denom2;
-        nume2result = (whole2 * denom2 + nume2) * denom1;
-        denomresult = denom1 * denom2;
-        if(operator.equals("+")){
+    public static String plusMinus(String operator, int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2){
+        int nume1result = (whole1 * denominator1 + numerator1);
+        int nume2result = (whole2 * denominator2 + numerator2);
+        int denomresult = denominator1 * denominator2;
+        if (operator.equals("+")){
             return nume1result + nume2result + "/" + denomresult;
         }
         else {
             return nume1result - nume2result + "/" + denomresult;
+        }
+    }
+    public static String multiplyDivide(String operator, int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2){
+        int nume1result = whole1 * denominator1 + numerator1;
+        int nume2result = whole2 * denominator2 + numerator2;
+        if (operator.equals("*")){
+            return nume1result * nume2result + "/" + denominator1 * denominator2;
+        }
+        else {
+            return nume1result * denominator2 + "/" + denominator1 * nume2result;
         }
     }
 }
