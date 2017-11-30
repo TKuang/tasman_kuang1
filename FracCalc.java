@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class FracCalc {
 
-    public static void main(String[] args) 
+   public static void main(String[] args) 
     {
     	String expression = "";
     	while (!expression.equals("quit")) {
@@ -81,24 +81,48 @@ public class FracCalc {
     }
                   
     public static String plusMinus(String operator, int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2){
-        int nume1result = (whole1 * denominator1 + numerator1);
-        int nume2result = (whole2 * denominator2 + numerator2);
+        int nume1result = (whole1 * denominator1 + numerator1) * denominator2;
+        int nume2result = (whole2 * denominator2 + numerator2) * denominator1;
         int denomresult = denominator1 * denominator2;
+        int numerator = 0;
+        int denominator = 0;
         if (operator.equals("+")){
-            return nume1result + nume2result + "/" + denomresult;
+            numerator = nume1result + nume2result;
+            denominator= denomresult;
         }
         else {
-            return nume1result - nume2result + "/" + denomresult;
+            numerator = nume1result - nume2result;
+            denominator = denomresult;
         }
+        return simplify(numerator, denominator);
     }
     public static String multiplyDivide(String operator, int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2){
         int nume1result = whole1 * denominator1 + numerator1;
         int nume2result = whole2 * denominator2 + numerator2;
+        int numerator = 0;
+        int denominator = 0;
         if (operator.equals("*")){
-            return nume1result * nume2result + "/" + denominator1 * denominator2;
+            numerator = nume1result * nume2result;
+            denominator = denominator1 * denominator2;
         }
         else {
-            return nume1result * denominator2 + "/" + denominator1 * nume2result;
+            numerator = nume1result * denominator2;
+            denominator = denominator1 * nume2result;
         }
-    }
-}
+        return simplify(numerator, denominator);
+    } 
+	public static Boolean isDivisibleBy (int num1, int num2) {
+		Boolean IsDivisibleBy;
+		if (num1 % num2 == 0){
+			IsDivisibleBy = true;
+			//num1 is divisible by num2 if the remainder of their division is 0
+		}
+		else {
+			IsDivisibleBy = false;
+			//if there is a remainder, then they are not divisible
+		}
+		if (num2 == 0){
+			throw new ArithmeticException("A result of a number divided by 0 is undefined");
+		}
+		return IsDivisibleBy;
+	}    
