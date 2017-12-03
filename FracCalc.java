@@ -1,4 +1,3 @@
-package fracCalc;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,22 +13,10 @@ public class FracCalc {
     		expression = input.nextLine();
     		System.out.println(produceAnswer(expression));
     	}
-        
-        // TODO: Read the input from the user and call produceAnswer with an equation
-
     }
-    
-    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
-    // This function takes a String 'input' and produces the result
-    //
-    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
-    //      e.g. input ==> "1/2 + 3/4"
-    //        
-    // The function should return the result of the fraction after it has been calculated
-    //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String expression)
     { 
-    	String[] splitExpression = expression.split(" ");
+    		String[] splitExpression = expression.split(" ");
         String operand1 = splitExpression[0];
         String operator = splitExpression[1];
         String operand2 = splitExpression[2];
@@ -53,30 +40,30 @@ public class FracCalc {
         }
     
     public static void fractionData(String operand, String[] splitOperand) {
-    	String whole = "";
-    	String numerator = "";
-    	String denominator = "";
-    	if( (operand.contains("/")) && (operand.contains("_"))) {
-    		String[] split2 = operand.split("/");
-        	String[] split3 = operand.split("_");
-        	whole = split3[0];
-        	String[] split4 = split2[0].split("_");
-        	numerator = split4[1];
-        	denominator = split2[1];
-    	}
-    	else if (operand.contains("/") && !operand.contains("_")) {
-    		String[] split2 = operand.split("/");
-    		whole = "0";
-    		numerator = split2[0];
-    		denominator= split2[1];
-    	}
-    	else {
-    		whole = operand;
-    		numerator = "0"; 
-    		denominator = "1";
-    	}
-        splitOperand[0] = whole;
-        splitOperand[1] = numerator;
+    		String whole = "";
+    		String numerator = "";
+    		String denominator = "";
+    		if( (operand.contains("/")) && (operand.contains("_"))) {
+    			String[] split2 = operand.split("/");
+    			String[] split3 = operand.split("_");
+    			whole = split3[0];
+    			String[] split4 = split2[0].split("_");
+    			numerator = split4[1];
+    			denominator = split2[1];
+    		}
+    		else if (operand.contains("/") && !operand.contains("_")) {
+    			String[] split2 = operand.split("/");
+    			whole = "0";
+    			numerator = split2[0];
+    			denominator= split2[1];
+    		}
+    		else {
+    			whole = operand;
+    			numerator = "0"; 
+    			denominator = "1";
+    		}
+    		splitOperand[0] = whole;
+    		splitOperand[1] = numerator;
         splitOperand[2] = denominator;
     }
                   
@@ -97,10 +84,47 @@ public class FracCalc {
         return simplify(numerator, denominator);
     }
     public static String multiplyDivide(String operator, int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2){
-        int nume1result = whole1 * denominator1 + numerator1;
-        int nume2result = whole2 * denominator2 + numerator2;
         int numerator = 0;
         int denominator = 0;
+        boolean negative = false;
+    		if (whole1 < 0 && whole2 < 0) {
+    			whole1 *= -1;
+    			whole2 *= -1; 
+    			negative = false;
+    		}
+    		if (whole1 < 0 && numerator2 < 0) {
+    			whole1 *= -1;
+    			numerator2 *= -1;
+    			negative = false;
+    		}
+    		if (numerator1 < 0 && whole2 < 0) {
+    			numerator1 *= -1;
+    			numerator2 *= -1;
+    			negative = false;
+    		}
+    		if (numerator1 < 0 && numerator2 < 0) {
+    			numerator1 *= -1;
+    			numerator2 *= -1;
+    			negative = false;
+    		}
+    		if (whole1 < 0 && (whole2 >= 0 && numerator2 >= 0)) {
+    			whole1 *= -1;
+    			negative = true;
+    		}
+    		if (numerator1 < 0 && (whole2 >= 0 && numerator2 >= 0)) {
+    			numerator1 *= -1;
+    			negative = true;
+    		}
+    		if (whole2 < 0 && (whole1 >= 0 && numerator1 >= 0)) {
+    			whole2 *= -1;
+    			negative = true;
+    		}
+    		if (numerator2 < 0 && (whole1 >= 0 && numerator1 >= 0)) {
+    			numerator2 *= -1;
+    			negative = true;
+    		}
+    		int nume1result = whole1 * denominator1 + numerator1;
+        int nume2result = whole2 * denominator2 + numerator2;
         if (operator.equals("*")){
             numerator = nume1result * nume2result;
             denominator = denominator1 * denominator2;
@@ -109,20 +133,50 @@ public class FracCalc {
             numerator = nume1result * denominator2;
             denominator = denominator1 * nume2result;
         }
-        return simplify(numerator, denominator);
+        if (negative != true){
+        		return simplify(numerator, denominator);
+        }
+        else {
+        		return "-" + simplify(numerator, denominator);
+        }
     } 
-	public static Boolean isDivisibleBy (int num1, int num2) {
-		Boolean IsDivisibleBy;
-		if (num1 % num2 == 0){
-			IsDivisibleBy = true;
-			//num1 is divisible by num2 if the remainder of their division is 0
-		}
-		else {
-			IsDivisibleBy = false;
-			//if there is a remainder, then they are not divisible
-		}
-		if (num2 == 0){
-			throw new ArithmeticException("A result of a number divided by 0 is undefined");
-		}
-		return IsDivisibleBy;
-	}    
+
+	public static String simplify (int numerator, int denominator){
+	    int temp = 0;
+	    int a = numerator;
+	    int b = denominator;
+	    if (b > a) {
+	         temp = a;
+	         a = b;
+	         b = temp;
+	    }
+	    while (b !=0) {
+	        temp = a % b;
+	        a = b;
+	        b = temp;
+	    }
+	    int gcd = a;
+	    numerator /= gcd;
+	    denominator /= gcd;
+	    int whole = 0;
+	    if (numerator >= denominator || numerator == 0) {
+	    		while (numerator >= denominator) {
+	    			numerator -= denominator;
+	    			whole ++;
+	    		}
+	    		if (numerator == 0) {
+	    			return whole + "";
+	    		}
+	    		if (denominator == 1) {
+	    			return numerator + "";
+	    		}
+	    		else {
+	    			return whole + "_" + numerator + "/" + denominator;
+	    }
+	    }
+	    	else {
+	    		return numerator + "/" + denominator;
+	    	}
+	    }   		
+  
+	}
