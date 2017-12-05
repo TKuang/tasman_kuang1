@@ -68,8 +68,32 @@ public class FracCalc {
     }
                   
     public static String plusMinus(String operator, int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2){
-        int nume1result = (whole1 * denominator1 + numerator1) * denominator2;
+        boolean negative1 = false;
+	if (whole1 < 0){
+		whole1 *= -1;
+		negative1 = true;
+	}
+	if (numerator1 < 0){
+		numerator1 *= -1;
+		negative1 = true;
+	}
+	int nume1result = (whole1 * denominator1 + numerator1) * denominator2;
+	if (negative1 != false){
+		nume1result *= -1;
+	}
+	boolean negative2 = false;
+	if (whole2 < 0){
+		whole2 *= -1;
+		negative2 = true;
+	}
+	if (numerator2 < 0){
+		numerator2 *= -1;
+		negative2 = true;
+	}
         int nume2result = (whole2 * denominator2 + numerator2) * denominator1;
+	if (negative2 != false){
+		nume2result *= -1;
+	}
         int denomresult = denominator1 * denominator2;
         int numerator = 0;
         int denominator = 0;
