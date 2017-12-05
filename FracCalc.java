@@ -133,6 +133,9 @@ public class FracCalc {
             numerator = nume1result * denominator2;
             denominator = denominator1 * nume2result;
         }
+	if (numerator == 0){
+		negative = false;
+	}
         if (negative != true){
         		return simplify(numerator, denominator);
         }
@@ -159,7 +162,7 @@ public class FracCalc {
 	    numerator /= gcd;
 	    denominator /= gcd;
 	    int whole = 0;
-	    if (numerator >= denominator || numerator == 0) {
+	    if ((numerator >= denominator || numerator == 0) && (denominatr != 1)) {
 	    		while (numerator >= denominator) {
 	    			numerator -= denominator;
 	    			whole ++;
@@ -167,13 +170,13 @@ public class FracCalc {
 	    		if (numerator == 0) {
 	    			return whole + "";
 	    		}
-	    		if (denominator == 1) {
-	    			return numerator + "";
-	    		}
 	    		else {
 	    			return whole + "_" + numerator + "/" + denominator;
 	    }
-	    }
+	    } 
+		else if (denominator == 1){
+		    return numeraator + "";
+	    }    
 	    	else {
 	    		return numerator + "/" + denominator;
 	    	}
