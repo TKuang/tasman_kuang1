@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -186,7 +185,7 @@ public class FracCalc {
 	    numerator /= gcd;
 	    denominator /= gcd;
 	    int whole = 0;
-	    if ((numerator >= denominator || numerator == 0) && (denominatr != 1)) {
+	    if ((numerator >= denominator || numerator == 0) && (denominator != 1)) {
 	    		while (numerator >= denominator) {
 	    			numerator -= denominator;
 	    			whole ++;
@@ -199,7 +198,7 @@ public class FracCalc {
 	    }
 	    } 
 		else if (denominator == 1){
-		    return numeraator + "";
+		    return numerator + "";
 	    }    
 	    	else {
 	    		return numerator + "/" + denominator;
