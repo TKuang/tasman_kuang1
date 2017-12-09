@@ -41,9 +41,9 @@ public class Calculate {
 		return toRadians;	
 	}
 	//returns value of discriminant given  coefficients of quadratic equation
-	public static int discriminant (int a, int b, int c) {
+	public static double discriminant (double a, double b, double c) {
 		//three coefficients from standard form equation are plugged into the discriminant b^2 * 4ac, result is returned
-		int discriminant = b*b-(4*a*c);
+		double discriminant = b*b-(4*a*c);
 		return discriminant;
 	}
 	//returns improper fractions given mixed number
@@ -159,35 +159,31 @@ public class Calculate {
 	}
 	//returns result of a value raised to a positive integer power
 	public static double exponent (double num1, int num2){
-		double multiply = num1;
-		for (int i = num2; i > 0; i--){
+		double multiply = 1;
+		for (int i = 0; i < num2; i++){
 			//loops number of times of num2
 			multiply *= num1;
 			//num1 is multiplied by itself for num2 cycles
 		}
-		if (num2 < 0){
-			throw new ArithmeticException("Program will only compute for positive exponents");
-		}
+		
 		return multiply;
 	}
 	//returns factorial of specific value
-	public static int factorial (int num){
-		int num1;
-		num1 = num;
-		int answer = num1 * num;
-		if (num >= 0){
-			for (int i = num; i > 0; i--){
-				num1--;
-				answer = num * num1;
-			}
-			//the number enterred is multiplied by itself repeatedly, with the multiple increasing by incrememnts of 1 until it reaches 0
-			return answer;
-			}
-		else {	
-			throw new ArithmeticException("Facorial of negative number cannot be found");
-		}
-
-	}
+	 public static int factorial(int num){
+	        int product = 1;
+	        if(num == 0){
+	            return 0;
+	        }
+	        else if(num < 0){
+	            throw new IllegalArgumentException("Your input is a negative number");
+	        }
+	        else{
+	            for(int i = 1; i <= num; i++){
+	                product *= i;
+	            }
+	            return product;
+	        }
+	    }
 	//determines whether or not a number is prime
 	public static boolean isPrime (int num){
 		boolean check;
@@ -217,7 +213,20 @@ public class Calculate {
 	}
 	//returns greatest common factor of two numbers
 	public static int gcf (int num1, int num2){
-		while (num2 != 0){
+		int temp = 0;
+	    if (num2 > num1) {
+	         temp = num1;
+	         num1 = num2;
+	         num2 = temp;
+	    }
+	    while (num2 !=0) {
+	        temp = num1 % num2;
+	        num1 = num2;
+	        num2 = temp;
+	    }
+	    int gcd = (int) absValue (num1);	
+	    return gcd;
+		/*while (num2 != 0){
 			if(isDivisibleBy(num1, num2)){
 				num1 = num2;
 				//returns integer if it is divisible by the other
@@ -228,7 +237,7 @@ public class Calculate {
 				num2 = num3 % num2;
 			}
 		}
-		return (int) absValue (num1);
+		return (int) absValue (num1);*/
 	}
 	//returns square root of a specific number
 	public static double sqrt(double num){
