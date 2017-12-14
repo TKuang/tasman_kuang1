@@ -1,5 +1,7 @@
 
 
+package fracCalc;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -170,7 +172,12 @@ public class FracCalc {
     } 
 
 	public static String simplify (int numerator, int denominator){
-	    int temp = 0;
+		boolean negative = false;
+		if (numerator < 0) {
+			numerator *= -1;
+			negative = true;
+		}
+		int temp = 0;
 	    int a = numerator;
 	    int b = denominator;
 	    if (b > a) {
@@ -192,6 +199,9 @@ public class FracCalc {
 	    			numerator -= denominator;
 	    			whole ++;
 	    		}
+	    		if (negative != false) {
+	    			whole *= -1;
+	    		}
 	    		if (numerator == 0) {
 	    			return whole + "";
 	    		}
@@ -199,10 +209,13 @@ public class FracCalc {
 	    			return whole + "_" + numerator + "/" + denominator;
 	    }
 	    } 
-		else if (denominator == 1){
+	    if (negative != false) {
+	    	numerator *= -1;
+	    }
+	    if (denominator == 1){
 		    return numerator + "";
 	    }    
-	    	else {
+	    else {
 	    		return numerator + "/" + denominator;
 	    	}
 	    }   		
