@@ -1,3 +1,7 @@
+//Tasman Kuang
+//12/9/17
+//This class asks user for an arithmetic expression and calculates the result
+
 public class objectFracCalc
 {
     private String expression;
@@ -7,69 +11,69 @@ public class objectFracCalc
         this.expression = expression;
     }
 
-    public void produceAnswer()//returns the final answer of calculation, simplified
+  //returns final answer of calculation
+    public static String produceAnswer(String expression)
     { 
-        // TODO: Implement this function to produce the solution to the input
-        String[] splitArr = expression.split(" ");
-        String firstOperand = splitArr[0];
-        String operator = splitArr[1];
-        String secondOperand = splitArr[2];
-        String[] answerStringOp1 = new String[3];
-        String[] answerStringOp2 = new String[3];
-        
-        parseOperands(firstOperand, answerStringOp1);
-        parseOperands(secondOperand, answerStringOp2);
-        
-        int whole1 = Integer.parseInt(answerStringOp1[0]);//convert strings in the array to integers
-        int nume1 = Integer.parseInt(answerStringOp1[1]);
-        int denom1 = Integer.parseInt(answerStringOp1[2]);
-        
-        int whole2 = Integer.parseInt(answerStringOp2[0]);
-        int nume2 = Integer.parseInt(answerStringOp2[1]);
-        int denom2 = Integer.parseInt(answerStringOp2[2]);
-        
+    	// TODO: Implement this function to produce the solution to the input
+    		String[] splitExpression = expression.split(" ");
+        String operand1 = splitExpression[0];
+        String operator = splitExpression[1];
+        String operand2 = splitExpression[2];
+        //splits expression at space into three elements
+        String[] splitOperand1 = new String[3];   
+        String[] splitOperand2 = new String[3];    
+        fractionData(operand1, splitOperand1);
+        fractionData(operand2, splitOperand2);
+        //passes elements in fractionData to return components of fraction
+        int whole1 = Integer.parseInt(splitOperand1[0]);
+        int nume1 = Integer.parseInt(splitOperand1[1]);
+        int denom1 = Integer.parseInt(splitOperand1[2]);
+        //converts string elements in array to integers
+        int whole2 = Integer.parseInt(splitOperand2[0]);
+        int nume2 = Integer.parseInt(splitOperand2[1]);
+        int denom2 = Integer.parseInt(splitOperand2[2]);
         int[] notReduced;
         int totalNume1 = toImproper(whole1, nume1, denom1);//changes the answer to improper fractions, meaning the answer is not reduced yet
         int totalNume2 = toImproper(whole2, nume2, denom2);
-        String reduced;
         if(operator.equals("+") || operator.equals("-")){
-            notReduced = plusMinus(operator, totalNume1, totalNume2, denom1, denom2);
+            return plusMinus(operator, totalNume1, totalNume2, denom1, denom2);
         }else{
-            notReduced = multiplyDivide(operator, totalNume1, totalNume2, denom1, denom2);
+            return multiplyDivide(operator, totalNume1, totalNume2, denom1, denom2);
         }
-        this.answer = reduce(notReduced);//reduce the improper answer
     }
     
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-    public void parseOperands(String operand, String[] answer){//process the input to determine the first operand, operator, and second operand
-        String wholeNumber = "";
+    public void fractionData(String operand, String[] splitOperand){//process the input to determine the first operand, operator, and second operand
+    		String whole = "";
         String numerator = "";
         String denominator = "";
-        String[] slashUnderscore;
-        String[] splitUnderscore = operand.split("_");//split the input at underscore
-        if(splitUnderscore.length == 2){//if the input is a mixed number
-            wholeNumber = splitUnderscore[0];//set the first element to wholeNumber
-            slashUnderscore = splitUnderscore[1].split("/");//split at slash to find numerator/denominator
-            if(slashUnderscore.length == 2){
-                numerator = slashUnderscore[0];
-                denominator = slashUnderscore[1];
+        String[] underscore = operand.split("_");
+        if(operand.split("_").length == 2){//spits fraction at underscore, checks if the input is a mixed number
+        		whole = underscore[0];
+            String[] slash = underscore[1].split("/");//split at slash to find numerator/denominator
+            if(slash.length == 2){
+                numerator = slash[0];
+                denominator = slash[1];
             }
-        }else{//if there is no wholeNumber
-            slashUnderscore = operand.split("/");
-            if(slashUnderscore.length == 2){
-                wholeNumber = "0";
-                numerator = slashUnderscore[0];
-                denominator = slashUnderscore[1];
-            }else{
-                wholeNumber = splitUnderscore[0];
+        }
+        else{
+        	//if there is no wholeNumber
+            String[] slash = operand.split("/");
+            if(slash.length == 2){
+                whole = "0";
+                numerator = slash[0];
+                denominator = slash[1];
+            }
+            else{
+                whole = underscore[0];
                 numerator = "0";
                 denominator = "1";
             }
         }
-        answer[0] = wholeNumber;
-        answer[1] = numerator;
-        answer[2] = denominator;
+        splitOperand[0] = whole;
+        splitOperand[1] = numerator;
+        splitOperand[2] = denominator;
     }
     public int[] plusMinus(String operator, int totalNume1, int totalNume2, int denom1, int denom2){
         int[] improp = new int[2];
@@ -101,7 +105,7 @@ public class objectFracCalc
         }
         return totalNume;
     }
-    public String reduce(int[] improper){//reduce the improper fraction
+    public String simplify(int[] improper){//reduce the improper fraction
         int reducedNume;
         int reducedDenom;
         int whole;
