@@ -7,4 +7,12 @@ public class Sphere extends ThreeDShape{
     }
   
     public double calcVolume(){
-        double volume = 4/3 * (math.pi
+        double volume = 4/3 * (Math.PI * radius * radius * radius);
+        return round2(volume);
+    }
+    
+    public double calcSA(){
+        double area = 4 * Math.PI * radius * radius;
+        return round2(area);
+    }
+}
